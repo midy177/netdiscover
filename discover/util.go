@@ -3,7 +3,6 @@ package discover
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net"
 	"net/http"
 )
@@ -12,7 +11,7 @@ import (
 // parse the IPv4 IP address contained therein.
 func ParseIPv4FromBody(in io.Reader) (net.IP, error) {
 
-	data, err := ioutil.ReadAll(in)
+	data, err := io.ReadAll(in)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read response: %v", err)
 	}
@@ -76,7 +75,7 @@ func StandardHostnameFromHTTP(url string, headers map[string]string) (string, er
 		return "", fmt.Errorf("non-2XX response: (%d) %s", resp.StatusCode, resp.Status)
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", fmt.Errorf("failed to read response: %v", err)
 	}
