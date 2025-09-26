@@ -47,14 +47,14 @@ func main() {
 
 	var discoverer discover.Discoverer
 	switch provider {
-	case "aws":
-		discoverer = discover.NewAWSDiscoverer()
-	case "azure":
-		discoverer = discover.NewAzureDiscoverer()
 	case "do":
 		discoverer = discover.NewDigitalOceanDiscoverer()
 	case "gcp":
 		discoverer = discover.NewGCPDiscoverer()
+	case "aws":
+		discoverer = discover.NewAWSDiscoverer()
+	case "azure":
+		discoverer = discover.NewAzureDiscoverer()
 	case "aliyun":
 		discoverer = discover.NewALIYUNDiscoverer()
 	default:
